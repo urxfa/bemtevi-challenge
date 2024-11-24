@@ -2,14 +2,33 @@
   "name": "bemtevi-challenge",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "start": "tsx src/app.ts",
+    "dev": "tsx watch src/app.ts",
+    "sync": "tsx src/config/sync.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.7",
-    "hono": "^4.6.11"
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/pg": "^8.11.10",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "hono": "^4.6.11",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.5",
+    "uuid": "^11.0.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/dotenv": "^6.1.1",
     "@types/node": "^20.11.17",
-    "tsx": "^4.7.1"
+    "@types/sequelize": "^4.28.20",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
+    "tsx": "^4.7.1",
+    "typescript-eslint": "^8.15.0"
   }
 }
