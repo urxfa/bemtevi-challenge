@@ -80,7 +80,6 @@ userRoutes.put('/me', authenticate, async (c: Context) => {
 
 userRoutes.delete('/me', authenticate, async (c: Context) => {
   try {
-
     const { uid } = c.get('user');
     await deleteUser(uid);
 

@@ -2,11 +2,8 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database.ts';
 import Insurer from './Insurer.ts';
 
-import insurancesTypes from '../types/insuranceTypesTypes.ts'
-
-
-interface InsuranceTypeAttributes {
-  uid: string;
+export interface InsuranceTypeAttributes {
+  id: number;
   insurerUid: string;
   name: string;
   description: string;
@@ -18,7 +15,7 @@ interface InsuranceTypeAttributes {
 }
 
 class InsuranceType extends Model<InsuranceTypeAttributes> {
-  public uid!: string;
+  public id!: number;
   public insurerUid!: string;
   public name!: string;
   public description!: string;
@@ -34,9 +31,9 @@ class InsuranceType extends Model<InsuranceTypeAttributes> {
 
 InsuranceType.init(
   {
-    uid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
     insurerUid: {
@@ -56,7 +53,7 @@ InsuranceType.init(
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM(...Object.values(insurancesTypes) as string[]),
+      type: DataTypes.STRING,
       allowNull: false
     },
     coverage: {

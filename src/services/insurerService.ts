@@ -2,7 +2,8 @@ import { Op } from 'sequelize'
 
 import Insurer from "../models/Insurer.ts";
 import type { InsurerAttributes } from "../models/Insurer.ts";
-import { appendTrailingSlash } from 'hono/trailing-slash';
+import type { InsuranceTypeAttributes } from '../models/InsuranceType.ts';
+import InsuranceType from '../models/InsuranceType.ts';
 
 export const createInsurer = async (insurerData: InsurerAttributes) => {
   const existingInsurer = await Insurer.findOne({
@@ -39,7 +40,6 @@ export const updateInsurerInfo = async (uid: string, insurerData: Partial<Insure
 
 export const getInsurerByUid = async (uid: string) => {
   const insurer = await Insurer.findOne({ where: { uid } })
-  console.log(insurer)
   if (!insurer)
     throw new Error("Insurer Not Found")
 
@@ -47,3 +47,25 @@ export const getInsurerByUid = async (uid: string) => {
   return insurerWithoutPassword;
 };
 
+export const createInsurance = async (insurerUid: string, insuranceData: InsuranceTypeAttributes) => {
+  const insurer = await Insurer.findOne({ where: { uid: insurerUid } })
+  if (!insurer)
+    throw new Error("Insurer Not Found")
+
+  const insurance = await InsuranceType.create({
+    ...insuranceData,
+    insurerUid: insurer.get('uid'),
+  });
+
+  return insurance.toJSON();
+};
+
+export const getAllInsurances = async (insurerUid: string, page: number = 1, pageSize: number = 10) => {
+  const offset = (page - 1) * pageSize;
+  const { count, rows } = await InsuranceType.findAndCountAll({ where: { insurerUid }, limit: pageSize, offset: offset });
+
+  const totalPages = Math.ceil(count / pageSize);
+
+  return { totalPages, currentPage: page, pageSize: 10, totalItems: count, data: rows };
+
+};

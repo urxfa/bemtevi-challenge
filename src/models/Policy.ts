@@ -5,9 +5,9 @@ import InsuranceType from './InsuranceType.ts';
 import User from './User.ts';
 
 interface PolicyAttributes {
-  uid: string;
+  id: number;
   userUid: string;
-  insuranceTypeUid: string;
+  insuranceTypeId: number;
   policyHolderName: string;
   policyHolderCnpj: string;
   insuredItemStatus: string;
@@ -17,7 +17,7 @@ interface PolicyAttributes {
 }
 
 class Policy extends Model<PolicyAttributes> {
-  public uid!: string;
+  public id!: string;
   public userUid!: string;
   public insuranceTypeUid!: string;
   public policyHolderName!: string;
@@ -33,20 +33,20 @@ class Policy extends Model<PolicyAttributes> {
 
 Policy.init(
   {
-    uid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
     userUid: {
       type: DataTypes.UUID,
       allowNull: false,
     },
-    insuranceTypeUid: {
-      type: DataTypes.UUID,
+    insuranceTypeId: {
+      type: DataTypes.INTEGER,
       references: {
         model: InsuranceType,
-        key: 'uid',
+        key: 'id',
       },
       allowNull: false,
     },
@@ -85,7 +85,7 @@ Policy.init(
   }
 );
 
-Policy.belongsTo(InsuranceType, { foreignKey: 'insuranceTypeUid', targetKey: 'uid' });
+Policy.belongsTo(InsuranceType, { foreignKey: 'insuranceTypeId', targetKey: 'id' });
 Policy.belongsTo(User, { foreignKey: 'userUid', targetKey: 'uid' })
 
 export default Policy;
