@@ -55,6 +55,7 @@ insurerRoutes.post('/create', async (c: Context) => {
   }
 });
 
+
 // Protected routes
 
 insurerRoutes.get('/about', authenticate, async (c: Context) => {

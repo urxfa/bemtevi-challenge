@@ -48,7 +48,6 @@ export const deleteUser = async (uid: string) => {
 }
 
 export const getUserByUid = async (uid: string) => {
-  console.log(uid)
   const user = await User.findOne({ where: { uid } })
 
   if (!user)

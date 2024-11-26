@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
-export const generateToken = (uid: string) => {
+export const generateToken = (uid: string, isInsurer: boolean) => {
   const secret = process.env.JWT_SECRET || 'mecontrata';
   console.log("Generating token for Uid: ", uid)
-  const token = jwt.sign({ uid }, secret, { expiresIn: '1h' });
+  const token = jwt.sign({ uid, isInsurer }, secret, { expiresIn: '1h' });
   return token;
 };
 

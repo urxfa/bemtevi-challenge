@@ -26,7 +26,7 @@ authRoutes.post('/user', async (c) => {
     return c.json({ message: 'Invalid email or password' }, 401);
   }
 
-  const token = generateToken(user.get('uid'));
+  const token = generateToken(user.get('uid'), false);
   return c.json({ token });
 }
 );
@@ -40,7 +40,7 @@ authRoutes.post('/insurer', async (c) => {
     return c.json({ message: 'Invalid email or password' }, 401);
   }
 
-  const token = generateToken(insurer.get('uid'));
+  const token = generateToken(insurer.get('uid'), true);
   return c.json({ token });
 }
 );
