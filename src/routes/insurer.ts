@@ -37,9 +37,13 @@ const insuranceTypeCreateSchema = z.object({
   description: z.string().min(1, { message: "Description is required" }),
   type: z.enum(insuranceTypeValues),
   coverage: z.string().min(1, { message: "Coverage information is required" }),
-  priceRange: z.number().min(0, { message: "Price range must be a positive number" }),
+  priceRange: z
+    .string()
+    .transform((val) => Number(val))
+    .refine((val) => !isNaN(val) && val >= 0, { message: "Price range must be a positive number" }), // Validação correta após conversão
   conditions: z.string().min(1, { message: "Conditions are required" }),
-})
+});
+
 
 insurerRoutes.post('/create', async (c: Context) => {
   try {
@@ -86,11 +90,11 @@ insurerRoutes.put('/about', authenticate, async (c: Context) => {
 
 insurerRoutes.post('/create/insurance', authenticate, async (c: Context) => {
   try {
+
     const body = await c.req.json();
-
     const { uid } = c.get('user');
-    const validatedData = insuranceTypeCreateSchema.parse(body);
 
+    const validatedData = insuranceTypeCreateSchema.parse(body);
     const insurance = await createInsurance(uid, validatedData as InsuranceTypeAttributes)
 
     return c.json(insurance);

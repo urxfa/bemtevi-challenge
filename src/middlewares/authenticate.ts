@@ -3,7 +3,6 @@ import { verifyToken } from '../auth.ts'
 
 const authenticate = async (c: Context, next: Next) => {
   const authHeader = c.req.header('Authorization');
-  console.log('Auth Header: ', authHeader);
 
   if (!authHeader) {
     return c.json({ message: 'Authorization header missing' }, 401);

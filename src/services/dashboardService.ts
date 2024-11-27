@@ -11,11 +11,12 @@ export const getDashboard = async (uid: string, isInsurer: boolean) => {
   if (!entity)
     throw new Error("Entity not found");
 
-  // Show all Insurances available
   if (!isInsurer) {
-    const insurers = await Insurer.findAll({ include: { model: InsuranceType }, attributes: ['uid', 'company_name', 'cnpj', 'address', 'phone'] });
-    console.log(insurers);
-    return { availableInsurers: insurers };
+    const insurances = await InsuranceType.findAll({
+      limit: 10,
+      order: [['createdAt', 'DESC']],
+    });
+    return { insurances: insurances };
   }
 
   const insurances = await getAllInsurances(uid);

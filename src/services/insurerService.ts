@@ -52,6 +52,8 @@ export const createInsurance = async (insurerUid: string, insuranceData: Insuran
   if (!insurer)
     throw new Error("Insurer Not Found")
 
+  console.log("Criando nosso seguro: ", insuranceData)
+
   const insurance = await InsuranceType.create({
     ...insuranceData,
     insurerUid: insurer.get('uid'),
