@@ -9,6 +9,10 @@ const port = 3000;
 
 app.use(logger())
 
+app.get('/', async c => {
+  return c.text("Funcionando!!")
+})
+
 serve({
   fetch: app.fetch,
   port,

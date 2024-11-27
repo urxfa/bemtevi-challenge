@@ -11,7 +11,7 @@ const routes = new Hono()
 routes.use(
   '*',
   cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://bemtevi-challenge-frontend.vercel.app'],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -22,5 +22,6 @@ routes.route('/auth', authRoutes);
 routes.route('/user', userRoutes);
 routes.route('/insurer', insurerRoutes)
 routes.route('/dashboard', dashboardRoutes);
+
 
 export default routes;
