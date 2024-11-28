@@ -10,10 +10,10 @@ interface PolicyAttributes {
   insuranceTypeId: number;
   policyHolderName: string;
   policyHolderCnpj: string;
-  insuredItemStatus: string;
   rejectedReason: string;
   inceptionDate: Date;
   expirationDate: Date;
+  pending: Boolean;
 }
 
 class Policy extends Model<PolicyAttributes> {
@@ -22,10 +22,10 @@ class Policy extends Model<PolicyAttributes> {
   public insuranceTypeUid!: string;
   public policyHolderName!: string;
   public policyHolderCnpj!: string;
-  public insuredItemStatus!: string;
   public rejectedReason!: string;
   public inceptionDate!: Date;
   public expirationDate!: Date;
+  public pending!: boolean;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -61,22 +61,22 @@ Policy.init(
         len: [14, 14],
       },
     },
-    insuredItemStatus: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     rejectedReason: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     inceptionDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     expirationDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
+    pending: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   },
   {
     sequelize,

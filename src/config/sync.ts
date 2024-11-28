@@ -1,8 +1,14 @@
 import sequelize from "./database";
+
 import User from '../models/User'
 import Insurer from '../models/Insurer'
 import InsuranceType from "../models/InsuranceType";
 import Policy from "../models/Policy";
+
+User.hasMany(Policy);
+Policy.belongsTo(User);
+Insurer.hasMany(InsuranceType);
+InsuranceType.belongsTo(Insurer);
 
 
 const syncDatabase = async () => {

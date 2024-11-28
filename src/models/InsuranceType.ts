@@ -71,6 +71,4 @@ InsuranceType.init(
     sequelize, tableName: 'insurance_type', timestamps: true
   });
 
-
-
 export default InsuranceType;
