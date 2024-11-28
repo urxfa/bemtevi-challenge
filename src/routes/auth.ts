@@ -4,10 +4,10 @@ import { Hono } from 'hono';
 const authRoutes = new Hono();
 
 // Models
-import User from '../models/User.ts';
-import Insurer from '../models/Insurer.ts';
+import User from '../models/User';
+import Insurer from '../models/Insurer';
 
-import { generateToken } from '../auth.ts';
+import { generateToken } from '../auth';
 
 import { z } from 'zod'
 

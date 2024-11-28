@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import type { Context } from 'hono';
-import authenticate from '../middlewares/authenticate.ts';
-import { getDashboard } from '../services/dashboardService.ts';
+import authenticate from '../middlewares/authenticate';
+import { getDashboard } from '../services/dashboardService';
 
 const dashboardRoutes = new Hono();
 

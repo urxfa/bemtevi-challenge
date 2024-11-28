@@ -1,9 +1,9 @@
 
-import InsuranceType from "../models/InsuranceType.ts";
-import Insurer from "../models/Insurer.ts";
-import User from "../models/User.ts";
+import InsuranceType from "../models/InsuranceType";
+import Insurer from "../models/Insurer";
+import User from "../models/User";
 
-import { getAllInsurances } from "./insurerService.ts";
+import { getAllInsurances } from "./insurerService";
 
 export const getDashboard = async (uid: string, isInsurer: boolean) => {
   const entity = isInsurer ? await Insurer.findOne({ where: { uid } }) : await User.findOne({ where: { uid } });

@@ -5,16 +5,16 @@ const insurerRoutes = new Hono();
 
 import { z } from 'zod'
 
-import authenticate from '../middlewares/authenticate.ts';
-import type { InsurerAttributes } from '../models/Insurer.ts';
-import type { InsuranceTypeAttributes } from '../models/InsuranceType.ts';
+import authenticate from '../middlewares/authenticate';
+import type { InsurerAttributes } from '../models/Insurer';
+import type { InsuranceTypeAttributes } from '../models/InsuranceType';
 
 // Types
-import insurancesTypes from '../types/insuranceTypesTypes.ts';
+import insurancesTypes from '../types/insuranceTypesTypes';
 const insuranceTypeValues = Object.values(insurancesTypes) as [string, ...string[]];
 
 
-import { createInsurer, getInsurerByUid, updateInsurerInfo, createInsurance, getAllInsurances } from '../services/insurerService.ts'
+import { createInsurer, getInsurerByUid, updateInsurerInfo, createInsurance, getAllInsurances } from '../services/insurerService'
 
 const insurerCreateSchema = z.object({
   company_name: z.string().min(1, { message: "Company name is required" }),

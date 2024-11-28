@@ -1,8 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database.ts';
+import sequelize from '../config/database';
 
-import InsuranceType from './InsuranceType.ts';
-import User from './User.ts';
+import InsuranceType from './InsuranceType';
+import User from './User';
 
 interface PolicyAttributes {
   id: number;

@@ -1,9 +1,9 @@
 import { Op } from 'sequelize'
 
-import Insurer from "../models/Insurer.ts";
-import type { InsurerAttributes } from "../models/Insurer.ts";
-import type { InsuranceTypeAttributes } from '../models/InsuranceType.ts';
-import InsuranceType from '../models/InsuranceType.ts';
+import Insurer from "../models/Insurer";
+import type { InsurerAttributes } from "../models/Insurer";
+import type { InsuranceTypeAttributes } from '../models/InsuranceType';
+import InsuranceType from '../models/InsuranceType';
 
 export const createInsurer = async (insurerData: InsurerAttributes) => {
   const existingInsurer = await Insurer.findOne({

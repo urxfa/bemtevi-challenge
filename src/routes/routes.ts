@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import { cors } from 'hono/cors'
 
-import authRoutes from "./auth.ts";
-import userRoutes from './user.ts';
-import insurerRoutes from "./insurer.ts";
-import dashboardRoutes from "./dashboard.ts";
+import authRoutes from "./auth";
+import userRoutes from './user';
+import insurerRoutes from "./insurer";
+import dashboardRoutes from "./dashboard";
 
 const routes = new Hono()
 

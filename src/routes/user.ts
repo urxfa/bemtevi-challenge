@@ -4,9 +4,9 @@ import type { Context } from 'hono';
 const userRoutes = new Hono();
 
 import { z } from 'zod'
-import { createUser, updateUser, getUserByUid, deleteUser } from '../services/userService.ts';
-import type { UserAttributes } from '../models/User.ts';
-import authenticate from '../middlewares/authenticate.ts';
+import { createUser, updateUser, getUserByUid, deleteUser } from '../services/userService';
+import type { UserAttributes } from '../models/User';
+import authenticate from '../middlewares/authenticate';
 
 const userCreationSchema = z.object({
   name: z.string().min(1, 'Name is required'),

@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
-    "strict": true,
-    "verbatimModuleSyntax": true,
-    "skipLibCheck": true,
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "types": [
-      "node"
-    ],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
+    "module": "ESNext", // Gera módulos ES6
+    "target": "ESNext", // Usando funcionalidades mais modernas
+    "esModuleInterop": true, // Facilita a interoperabilidade entre ES e CommonJS
+    "moduleResolution": "Node", // Usa a resolução de módulos no estilo Node.js
+    "outDir": "dist", // Diretório de saída
+    "resolveJsonModule": true, // Permite importar arquivos JSON
+    "allowSyntheticDefaultImports": true,
+    "plugins": [
+      {
+        "transform": "ts-transform-paths"
+      }
+    ]
   }
 }

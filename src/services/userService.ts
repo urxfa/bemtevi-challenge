@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
-import User from '../models/User.ts'
-import type { UserAttributes } from '../models/User.ts'
+import User from '../models/User'
+import type { UserAttributes } from '../models/User'
 
 export const createUser = async (userData: UserAttributes) => {
   const existingUser = await User.findOne({

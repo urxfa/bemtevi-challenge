@@ -1,11 +1,18 @@
-import { logger } from 'hono/logger';
-import { handle } from '@hono/node-server/vercel'
+import type { Context } from 'hono';
+import { serve } from '@hono/node-server'
 
-import routes from './routes/index.ts';
+import { logger } from 'hono/logger';
+
+import routes from './routes/routes';
 
 const app = routes;
 
 app.use('*', logger());
-app.get('/', (c) => c.text('Funcionando!!'));
 
-export default handle(app);
+app.get('/', (c: Context) => c.text('Funcionando!!'));
+
+serve({
+  fetch: app.fetch,
+  port: 3000,
+})
+

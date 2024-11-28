@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database.ts';
-import Insurer from './Insurer.ts';
+import sequelize from '../config/database';
+import Insurer from './Insurer';
 
 export interface InsuranceTypeAttributes {
   id: number;

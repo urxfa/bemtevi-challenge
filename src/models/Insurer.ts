@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt'
 
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database.ts'
+import sequelize from '../config/database'
 
-import InsuranceType from './InsuranceType.ts';
+import InsuranceType from './InsuranceType';
 
 export interface InsurerAttributes {
   uid: string;

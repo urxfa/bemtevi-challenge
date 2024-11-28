@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database.ts';
+import sequelize from '../config/database';
 
 export interface UserAttributes {
   uid: string;

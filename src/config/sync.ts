@@ -1,8 +1,8 @@
-import sequelize from "./database.ts";
-import User from '../models/User.ts'
-import Insurer from '../models/Insurer.ts'
-import InsuranceType from "../models/InsuranceType.ts";
-import Policy from "../models/Policy.ts";
+import sequelize from "./database";
+import User from '../models/User'
+import Insurer from '../models/Insurer'
+import InsuranceType from "../models/InsuranceType";
+import Policy from "../models/Policy";
 
 
 const syncDatabase = async () => {
