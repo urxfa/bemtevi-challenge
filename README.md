@@ -1,8 +1,12 @@
-```
-npm install
-npm run dev
+# Bem te Vi API
+
+## Docker
+```bash
+docker compose up
 ```
 
-```
-open http://localhost:3000
+```bash
+npm install
+npm run sync
+npm run dev
 ```
